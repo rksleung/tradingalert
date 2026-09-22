@@ -1,11 +1,14 @@
 # Prerequisite
 Python: Install python https://www.python.org/downloads/
 
-To Validate that python and pip is installed
+To Validate that python and pip is installed, run the following on command prompt.
+
+- python --version
+- pip --version
+
 For windows, make sure to set the environment PATH to the python bin, if not already.
-usually, C:\Users\[User]\AppData\Local\Python\bin
-python --version
-pip --version
+usually, C:\Users\\{User}\AppData\Local\Python\bin
+
 
 # Other libraries
 - pip install streamlit
