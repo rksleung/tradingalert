@@ -14,6 +14,7 @@ usually, C:\Users\\{User}\AppData\Local\Python\bin
 - pip install streamlit
 - pip install pandas
 - pip install git+https://github.com/mariostoev/finviz@master
+- pip install yfinance
 
 # To run the executable
 python -m streamlit run app.py 
