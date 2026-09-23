@@ -1,7 +1,8 @@
 import sys
 import datetime
-from storage import init_db, save_doji_setups
+from storage import init_db, save_doji_setups, get_latest_doji_setups, save_doji_breakouts
 from scanner import parse_filters_from_url, run_finviz_scan
+from evaluation import evaluate_doji_breakouts
 import yfinance as yf
 import pandas as pd
 
@@ -75,6 +76,14 @@ def run_daily_job(finviz_url):
 
     print(f"SUCCESS: Saved {len(df_finviz)} stock records for {today_date} into SQLite.")
     print(df_finviz.head())
+
+    # 5. Evaluate yesterday doji
+    df_dojis, latest_date = get_latest_doji_setups()
+    df_breakouts = evaluate_doji_breakouts(df_dojis, latest_date)
+    save_doji_breakouts(df_breakouts, today_date)
+
+    print(f"SUCCESS: Saved {len(df_breakouts)} stock records for {today_date} into SQLite.")
+    print(df_breakouts.head())
 
 if __name__ == "__main__":
     # Allow passing the Finviz URL as a command-line argument, or use a default fallback
